@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwriting Fonts | Premium Collection 2026</title>
+    <meta name="description" content="Premium curated collection of handwriting fonts for designers. Creative Fabrica partner.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Alex+Brush&family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Mr+De+Haviland&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#0a0a0a',
+                            dark: '#121212',
+                            gray: '#1c1c1c',
+                            accent: '#d4af37',
+                            accentHover: '#b5952f',
+                            white: '#f4f4f0',
+                            glass: 'rgba(255, 255, 255, 0.05)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        script1: ['"Great Vibes"', 'cursive'],
+                        script2: ['"Caveat"', 'cursive'],
+                        script3: ['"Alex Brush"', 'cursive'],
+                        script4: ['"Mr De Haviland"', 'cursive'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f4f4f0;
+            overflow-x: hidden;
+        }
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #f4f4f0 0%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gold {
+            background: linear-gradient(135deg, #f4e3a4 0%, #d4af37 50%, #8a6e2f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.04%22/%3E%3C/svg%3E');
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+
+        .animate-marquee { animation: marquee 20s linear infinite; }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body class="font-sans selection:bg-brand-accent selection:text-black">
+
+<div class="noise-overlay"></div>
+
+<!-- Navigation -->
+<nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-brand-black/80 backdrop-blur-md border-b border-white/5"></div>
+    <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold tracking-tighter z-10 flex items-center gap-2">
+            <span class="w-3 h-3 bg-brand-accent rounded-full"></span>
+            INK & SOUL
+        </a>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+            <a href="#collection" class="hover:text-brand-accent transition-colors">Collection</a>
+            <a href="#features" class="hover:text-brand-accent transition-colors">License</a>
+            <a href="#faq" class="hover:text-brand-accent transition-colors">FAQ</a>
+        </div>
+        <a href="https://www.creativefabrica.com/fonts/handwriting-fonts/ref/5466775/?campaign=handwriting-fonts"
+           target="_blank"
+           class="hidden md:inline-flex items-center justify-center px-6 py-2 text-sm font-semibold text-brand-black bg-brand-white rounded-full hover:bg-brand-accent transition-all duration-300 transform hover:scale-105">
+            Download All
+        </a>
+        <button class="md:hidden text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="gsap-hero opacity-0 translate-y-10">
+            <span class="inline-block py-1 px-3 rounded-full border border-white/10 bg-white/5 text-brand-accent text-xs tracking-widest uppercase mb-6 backdrop-blur-sm">
+                Creative Fabrica Partner
+            </span>
+        </div>
+
+        <h1 class="gsap-hero text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-tight mb-6 opacity-0 translate-y-10">
+            Give your words<br />
+            <span class="font-script1 text-gold font-normal px-2 block mt-2 md:inline">soul</span> and character.
+        </h1>
+
+        <p class="gsap-hero text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 opacity-0 translate-y-10 font-light">
+            Curated access to thousands of premium handwriting fonts. From elegant calligraphy to casual sketches – all under one simple subscription.
+        </p>
+
+        <div class="gsap-hero flex flex-col md:flex-row gap-4 justify-center items-center opacity-0 translate-y-10">
+            <a href="https://www.creativefabrica.com/fonts/handwriting-fonts/ref/5466775/?campaign=handwriting-fonts"
+               target="_blank"
+               class="group relative px-8 py-4 bg-brand-accent text-brand-black font-bold rounded-full overflow-hidden transition-all hover:shadow-[0_0_40px_-10px_rgba(212,175,55,0.6)]">
+                <span class="relative z-10 flex items-center gap-2">
+                    Get All Access
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+            </a>
+            <a href="#collection" class="px-8 py-4 text-white border border-white/20 rounded-full hover:bg-white/5 transition-all">
+                Browse previews
+            </a>
+        </div>
+
+        <div class="absolute top-1/2 left-0 -translate-y-1/2 hidden lg:block animate-float">
+            <p class="font-script3 text-6xl text-white/5 rotate-[-15deg]">Signature</p>
+        </div>
+        <div class="absolute top-1/3 right-10 hidden lg:block animate-float" style="animation-delay:1.5s;">
+            <p class="font-script2 text-5xl text-white/5 rotate-[10deg]">Authentic</p>
+        </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+        <span class="text-[10px] uppercase tracking-widest">Scroll</span>
+        <div class="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
+    </div>
+</header>
+
+<!-- Marquee -->
+<div class="w-full bg-brand-white text-brand-black py-4 overflow-hidden whitespace-nowrap border-y border-brand-accent transform -rotate-1 origin-left relative z-20">
+    <div class="inline-flex animate-marquee">
+        <span class="mx-8 text-xl font-bold uppercase tracking-widest">Handwriting Fonts</span> •
+        <span class="mx-8 text-xl font-script1">Calligraphy</span> •
+        <span class="mx-8 text-xl font-bold uppercase tracking-widest">Brush Style</span> •
+        <span class="mx-8 text-xl font-script2">Modern Script</span> •
+        <span class="mx-8 text-xl font-bold uppercase tracking-widest">Signature</span> •
+        <span class="mx-8 text-xl font-script1">Wedding</span> •
+        <span class="mx-8 text-xl font-bold uppercase tracking-widest">Handwriting Fonts</span> •
+        <span class="mx-8 text-xl font-script1">Calligraphy</span> •
+        <span class="mx-8 text-xl font-bold uppercase tracking-widest">Brush Style</span> •
+        <span class="mx-8 text-xl font-script2">Modern Script</span> •
+        <span class="mx-8 text-xl font-bold uppercase tracking-widest">Signature</span> •
+        <span class="mx-8 text-xl font-script1">Wedding</span> •
+    </div>
+</div>
+
+<!-- Collection -->
+<section id="collection" class="py-24 md:py-32 relative">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-6">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gsap-fade">
+                    Trending handwriting sets
+                </h2>
+                <p class="text-gray-400 max-w-md gsap-fade">
+                    Perfect for branding, invitations, packaging and social media graphics.
+                </p>
+            </div>
+            <a href="https://www.creativefabrica.com/fonts/handwriting-fonts/ref/5466775/?campaign=handwriting-fonts"
+               target="_blank"
+               class="text-brand-accent hover:text-white transition-colors flex items-center gap-2 gsap-fade">
+                See all fonts
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <!-- SEO H2 with keyword -->
+        <div class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-3">
+                Best handwriting fonts for 2026
+            </h2>
+            <p class="text-gray-400 max-w-2xl">
+                Explore a hand‑picked collection of handwriting fonts for 2026: from simple handwritten styles for everyday notes to expressive calligraphy fonts for logos, wedding stationery and print on demand products.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[300px]">
+
+            <!-- 1. Category / Featured -->
+            <div class="card-gsap md:col-span-2 lg:col-span-2 row-span-2 group relative rounded-3xl overflow-hidden bg-brand-gray border border-white/5 hover:border-brand-accent/30 transition-all duration-500">
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <span class="text-brand-accent text-sm font-bold uppercase tracking-wider mb-2 block">
+                        Handwriting Fonts Collection 2026
+                    </span>
+                    <h3 class="font-script1 text-5xl md:text-6xl text-white mb-2">
+                        All‑in‑One Library
+                    </h3>
+                    <p class="text-gray-300 line-clamp-3">
+                        Browse hundreds of handwriting fonts in one place: romantic scripts, casual notes, neat journal styles and more. Save time on searching and focus on design.
+                    </p>
+                    <div class="mt-6 flex items-center gap-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                        <a href="https://www.creativefabrica.com/fonts/handwriting-fonts/ref/5466775/?campaign=handwriting-fonts"
+                           target="_blank"
+                           class="px-6 py-2 bg-white text-black rounded-full font-bold text-sm">
+                            Open collection
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Simple Handwriting 13 -->
+            <div class="card-gsap group relative rounded-3xl overflow-hidden bg-[#1a1a1a] border border-white/5 p-6 flex flex-col justify-center items-center text-center hover:bg-[#222] transition-colors">
+                <h3 class="font-script2 text-4xl text-white mb-2">Simple Handwriting 13</h3>
+                <p class="text-gray-400 text-sm mb-4">
+                    Clean everyday handwriting font that stays readable on quotes, shirts and social posts.
+                </p>
+                <a href="https://www.creativefabrica.com/product/simple-handwriting-13/ref/5466775/?campaign=handwriting-fonts"
+                   target="_blank"
+                   class="text-brand-accent text-xs font-semibold uppercase tracking-widest">
+                    View font →
+                </a>
+            </div>
+
+            <!-- 3. Swanky Writing -->
+            <div class="card-gsap group relative rounded-3xl overflow-hidden bg-brand-white text-brand-black p-8 flex flex-col justify-between hover:bg-gray-200 transition-colors">
+                <div class="font-script1 text-5xl leading-[0.9]">Swanky<br>Writing</div>
+                <div class="flex justify-between items-end mt-4">
+                    <span class="text-xs uppercase font-bold tracking-widest opacity-60">
+                        Playful & elegant
+                    </span>
+                    <a href="https://www.creativefabrica.com/product/swanky-writing/ref/5466775/?campaign=handwriting-fonts"
+                       target="_blank"
+                       class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center transform -rotate-45 group-hover:rotate-0 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4. Writing Signature 10 -->
+            <div class="card-gsap md:col-span-2 row-span-1 group relative rounded-3xl overflow-hidden bg-[#151515] border border-white/5 flex items-center px-8 md:px-12 hover:border-white/20 transition-all">
+                <div class="grid grid-cols-2 w-full gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Writing Signature 10</h3>
+                        <p class="text-gray-400 text-sm mb-6">
+                            Smooth signature script for logos, personal brands and high‑end packaging.
+                        </p>
+                        <a href="https://www.creativefabrica.com/product/writing-signature-10/ref/5466775/?campaign=handwriting-fonts"
+                           target="_blank"
+                           class="text-brand-accent text-sm border-b border-brand-accent pb-1 cursor-pointer">
+                            View details
+                        </a>
+                    </div>
+                    <div class="relative h-full flex items-center justify-center">
+                        <h2 class="font-script3 text-6xl md:text-7xl text-white/10 absolute select-none">Signature</h2>
+                        <h2 class="font-script3 text-6xl md:text-7xl text-gradient relative z-10">Signature</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Cute Handwriting Bundle -->
+            <div class="card-gsap group relative rounded-3xl overflow-hidden bg-brand-dark border border-white/5 p-6 flex flex-col justify-end">
+                <div class="absolute top-6 right-6 text-brand-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3 class="font-script2 text-3xl text-white mb-2">Cute Handwriting Bundle</h3>
+                <p class="text-gray-400 text-xs mb-3">
+                    Sweet handwritten fonts for kids designs, planners and quotes in one bundle.
+                </p>
+                <a href="https://www.creativefabrica.com/product/the-cute-handwriting-bundle/ref/5466775/?campaign=handwriting-fonts"
+                   target="_blank"
+                   class="text-brand-accent text-xs font-semibold uppercase tracking-widest">
+                    Open bundle →
+                </a>
+            </div>
+
+            <!-- 6. Stylish Writing 2 -->
+            <div class="card-gsap group relative rounded-3xl overflow-hidden bg-[#1a1a1a] border border-white/5 p-6 flex flex-col justify-center">
+                <h3 class="font-script1 text-3xl text-white mb-2">Stylish Writing 2</h3>
+                <p class="text-gray-400 text-sm mb-4">
+                    Fashion‑inspired handwriting for headers, magazine‑style graphics and Instagram posts.
+                </p>
+                <a href="https://www.creativefabrica.com/product/stylish-writing-2/ref/5466775/?campaign=handwriting-fonts"
+                   target="_blank"
+                   class="text-brand-accent text-xs font-semibold uppercase tracking-widest">
+                    View font →
+                </a>
+            </div>
+
+            <!-- 7. Simple Writing 6 -->
+            <div class="card-gsap group relative rounded-3xl overflow-hidden bg-brand-white text-brand-black p-6 flex flex-col justify-between">
+                <h3 class="font-script2 text-3xl mb-2">Simple Writing 6</h3>
+                <p class="text-gray-700 text-sm mb-4">
+                    Minimal, neat handwriting that works on POD designs, mugs and T‑shirts.
+                </p>
+                <a href="https://www.creativefabrica.com/product/simple-writing-6/ref/5466775/?campaign=handwriting-fonts"
+                   target="_blank"
+                   class="text-xs font-semibold uppercase tracking-widest">
+                    See details →
+                </a>
+            </div>
+
+            <!-- 8. Handwriting 5 -->
+            <div class="card-gsap group relative rounded-3xl overflow-hidden bg-brand-gray border border-white/5 p-6 flex flex-col justify-between">
+                <h3 class="font-script3 text-3xl text-white mb-2">Handwriting 5</h3>
+                <p class="text-gray-300 text-sm mb-4">
+                    Organic, slightly messy strokes for quotes, journals and poster designs.
+                </p>
+                <a href="https://www.creativefabrica.com/product/handwriting-5/ref/5466775/?campaign=handwriting-fonts"
+                   target="_blank"
+                   class="text-brand-accent text-xs font-semibold uppercase tracking-widest">
+                    View font →
+                </a>
+            </div>
+
+            <!-- 9. Creative Handwriting -->
+            <div class="card-gsap group relative rounded-3xl overflow-hidden bg-[#151515] border border-white/5 p-6 flex flex-col justify-between">
+                <h3 class="font-script1 text-3xl text-white mb-2">Creative Handwriting</h3>
+                <p class="text-gray-400 text-sm mb-4">
+                    Expressive handwritten font that adds personality to posters, covers and branding.
+                </p>
+                <a href="https://www.creativefabrica.com/product/creative-handwriting/ref/5466775/?campaign=handwriting-fonts"
+                   target="_blank"
+                   class="text-brand-accent text-xs font-semibold uppercase tracking-widest">
+                    Try it →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Why / License -->
+<section id="features" class="py-20 bg-brand-white text-brand-black relative overflow-hidden">
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row gap-16 items-start">
+            <div class="lg:w-1/3 sticky top-32">
+                <h2 class="text-5xl font-bold mb-6 tracking-tight leading-none">
+                    One subscription.<br>Unlimited lettering.
+                </h2>
+                <p class="text-lg text-gray-600 mb-4">
+                    Creative Fabrica offers one of the most generous font licenses on the market. Use the fonts for clients, print and web without worrying about legal issues.
+                </p>
+                <!-- SEO H2 inside section -->
+                <h2 class="text-2xl font-semibold mb-4">
+                    Why designers love handwriting fonts
+                </h2>
+                <p class="text-gray-600 mb-8">
+                    Handwriting fonts instantly add warmth and personality to digital designs. With a single all‑access subscription you can test dozens of handwritten styles until you find the one that matches your brand voice.
+                </p>
+                <a href="https://www.creativefabrica.com/subscription/fonts/ref/5466775/?campaign=handwriting-fonts"
+                   target="_blank"
+                   class="inline-block px-8 py-3 bg-brand-black text-white rounded-full font-bold hover:bg-brand-accent hover:text-black transition-colors">
+                    Read full license
+                </a>
+            </div>
+
+            <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                <div class="feature-gsap">
+                    <div class="w-12 h-12 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Commercial license included</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Every download comes with commercial rights. Sell your designs on Etsy, Amazon or to freelance clients without extra royalties.
+                    </p>
+                </div>
+
+                <div class="feature-gsap">
+                    <div class="w-12 h-12 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Safe & tested files</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        All fonts are checked and include full character sets, numbers and punctuation. No broken files, no missing glyphs.
+                    </p>
+                </div>
+
+                <div class="feature-gsap">
+                    <div class="w-12 h-12 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" x2="12" y1="22.08" y2="12"/></svg>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <h3 class="text-2xl font-bold">Huge handwriting library</h3>
+                        <span class="bg-black text-white text-[10px] px-2 py-1 rounded">HOT</span>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        Daily new releases and access to 160,000+ fonts, including exclusive scripts from top lettering artists.
+                    </p>
+                </div>
+
+                <div class="feature-gsap">
+                    <div class="w-12 h-12 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="m8 12 4 4 4-4"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">POD‑friendly usage</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Perfect for print‑on‑demand. Create legal designs for T‑shirts, mugs, posters and more with one subscription.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Type tester -->
+<section class="py-24 bg-[#0a0a0a] border-t border-white/5 overflow-hidden">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-12 text-gray-400">
+            Test the handwriting magic
+        </h2>
+
+        <div class="relative max-w-4xl mx-auto h-64 flex items-center justify-center bg-[#111] rounded-2xl border border-white/10 p-4">
+            <p id="type-demo" class="text-5xl md:text-7xl lg:text-8xl text-brand-accent transition-all duration-500 font-script1" contenteditable="true" spellcheck="false">
+                Inspiration
+            </p>
+            <div class="absolute bottom-4 left-0 w-full flex justify-center gap-4">
+                <button onclick="changeFont('font-script1')" class="px-4 py-1 text-xs rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10">Great Vibes</button>
+                <button onclick="changeFont('font-script2')" class="px-4 py-1 text-xs rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10">Caveat</button>
+                <button onclick="changeFont('font-script3')" class="px-4 py-1 text-xs rounded-full bg-white/5 hover:bg-white/20 text-white transition-colors border border-white/10">Alex Brush</button>
+            </div>
+        </div>
+        <p class="mt-4 text-xs text-gray-600">Click the text and type your own phrase.</p>
+    </div>
+</section>
+
+<!-- FAQ for SEO -->
+<section id="faq" class="py-20 bg-brand-black border-t border-white/5">
+    <div class="container mx-auto px-6 max-w-3xl">
+        <h2 class="text-3xl font-bold mb-8">
+            Frequently asked questions about handwriting fonts
+        </h2>
+
+        <div class="space-y-6 text-left text-gray-300 text-sm leading-relaxed">
+            <div>
+                <h3 class="font-semibold text-lg mb-1">
+                    What are handwriting fonts used for?
+                </h3>
+                <p>
+                    Handwriting fonts are digital typefaces that imitate real handwritten letters. Designers use them for logos, quotes, social media posts, wedding invitations, planners and any project where a human, personal touch is important.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-lg mb-1">
+                    Can I use these handwriting fonts for commercial projects?
+                </h3>
+                <p>
+                    Yes. With the Creative Fabrica subscription you get commercial use rights for the handwriting fonts in this collection, so you can sell designs on marketplaces or work with clients without buying extra individual licenses.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-lg mb-1">
+                    Are handwriting fonts good for Cricut and print on demand?
+                </h3>
+                <p>
+                    Many of the handwriting fonts featured here are optimized for cutting machines like Cricut and for print on demand products. They have clean curves, complete character sets and are tested on T‑shirts, mugs, posters and other popular POD items.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA footer -->
+<footer class="relative py-24 bg-brand-black overflow-hidden flex flex-col items-center justify-center text-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-accent/10 to-transparent pointer-events-none"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <h2 class="text-5xl md:text-8xl font-bold tracking-tighter mb-8 font-script3 text-brand-white">
+            Ready to letter everything?
+        </h2>
+        <p class="text-xl text-gray-400 mb-10 max-w-xl mx-auto">
+            Get instant access to thousands of handwriting fonts for just $4.99/month (promo price).
+        </p>
+        <a href="https://www.creativefabrica.com/fonts/handwriting-fonts/ref/5466775/?campaign=handwriting-fonts"
+           target="_blank"
+           class="inline-flex items-center justify-center px-10 py-5 bg-brand-accent text-black font-bold text-lg rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_50px_-15px_rgba(212,175,55,0.5)]">
+            Activate All Access
+        </a>
+
+        <div class="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
+            <p>&copy; 2026 Ink & Soul. Partner of Creative Fabrica.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".gsap-hero", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        delay: 0.2
+    });
+
+    gsap.utils.toArray('.card-gsap').forEach((card) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+        });
+    });
+
+    gsap.utils.toArray('.feature-gsap').forEach((feature, i) => {
+        gsap.from(feature, {
+            scrollTrigger: {
+                trigger: "#features",
+                start: "top 70%"
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            delay: i * 0.1,
+            ease: "power2.out"
+        });
+    });
+
+    function changeFont(fontClass) {
+        const demo = document.getElementById('type-demo');
+        demo.className = `text-5xl md:text-7xl lg:text-8xl text-brand-accent transition-all duration-500 ${fontClass}`;
+    }
+
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            nav.classList.add('py-2');
+            nav.classList.remove('py-4');
+        } else {
+            nav.classList.add('py-4');
+            nav.classList.remove('py-2');
+        }
+    });
+</script>
+
+</body>
+</html>
